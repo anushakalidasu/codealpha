@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy Motorcycles Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+body {
+    background-image: url('bmw-background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+   
+    
+    height: 100vh;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    font-family: Montserrat, sans-serif;
+}
+
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 37px;
+            font-weight: bold italic;
+            color: #07080b;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 600px;
+            height: 435px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 600px;
+            height: 350px;
+            display: none;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .gallery img.active {
+            display: block;
+        }
+
+        .caption {
+            font-size: 19px;
+            font-weight:  italic;
+            color: #070606;
+            margin-top: 6px;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BMW</h1>
+    <img src="img/bmwlogo.png" alt="BMW Logo" width="100px" height="80px">
+    <p>Bayerische Motoren Werke</p>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="img/gal01.jpeg" alt="BMW">
+            <p class="caption">BMW 1 Series (F40)</p>
+
+            <img src="img/gal02.jpeg" alt="BMW">
+            <p class="caption">BMW 2 Series (G42)</p>
+            <img src="img/gal03.jpeg" alt="BMW">
+            <p class="caption">BMW 3 Series (G20)</p>
+            <img src="img/gal04.jpeg" alt="BMW">
+            <p class="caption">BMW 4 Series (G22)</p>
+            <img src="img/gal05.jpeg" alt="BMW">
+            <p class="caption">BMW 5 Series (G30)</p>
+            <img src="img/gal06.jpeg" alt="BMW">
+            <p class="caption">BMW 6 Series (G32)</p>
+            <img src="img/gal07.jpeg" alt="BMW">
+            <p class="caption">BMW 7 Series (G11)</p>
+            <img src="img/gal08.jpeg" alt="BMW">
+            <p class="caption">BMW 8 Series (G15)</p>
+        </div>
+
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const captions = document.querySelectorAll('.caption');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            captions.forEach(cap => cap.style.display = 'none');
+
+            images[index].classList.add('active');
+            captions[index].style.display = 'block';
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
+        });
+
+        // Initial display
+        showImage(currentIndex);
+
+        
+</script>
+
+
+
+
+</body>
+</html>
+
